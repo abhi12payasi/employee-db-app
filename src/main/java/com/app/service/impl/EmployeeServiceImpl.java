@@ -10,11 +10,13 @@ import java.util.List;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     private static IEmployeeDao employeeDAO;
+
     static {
         employeeDAO = new EmployeeDaoImpl();
     }
+
     @Override
-    public int saveEmployee(Employee employee) throws SQLException {
+    public Employee saveEmployee(Employee employee) throws SQLException {
         return employeeDAO.saveEmployee(employee);
     }
 
@@ -24,17 +26,17 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public void updateEmployee(Employee employee) throws SQLException{
-        employeeDAO.updateEmployee(employee);
+    public Employee updateEmployee(Employee employee) throws SQLException {
+        return employeeDAO.updateEmployee(employee);
     }
 
     @Override
-    public Employee getOneEmployee(int id) throws SQLException{
+    public Employee getOneEmployee(int id) throws SQLException {
         return employeeDAO.getOneEmployee(id);
     }
 
     @Override
-    public List<Employee> getAllEmployees() throws SQLException{
+    public List<Employee> getAllEmployees() throws SQLException {
         return employeeDAO.getAllEmployees();
     }
 }
